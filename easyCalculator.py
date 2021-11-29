@@ -178,7 +178,7 @@ def Culculator_main():
             Operation = input("[ * ] Operator : ")
             if check(Operation, "Operator") == False:
                 print("[ ! ] Please, put in a valid Operator\n")
-                Repeat = input("try agian? (y/n) : ")
+                Repeat = input("[ * ] try agian? (y/n) : ")
                 if str.lower(Repeat) == "n":
                     break
                 else:
