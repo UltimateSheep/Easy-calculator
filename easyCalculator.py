@@ -28,7 +28,7 @@ def check(_num, _type):
 
     if _type == "Operator":
         _Operation = str(_num)
-        check2 = Calculate(5, 5, _Operation)
+        check2 = Calculate(156, 54, _Operation)
         if check2 == False:
             return False
         else:
@@ -80,7 +80,11 @@ def menu_choices(_choice):
     # false means succesfully and break while loop
     Valid = check(choice, "Num")
     if Valid == False:
-        return True
+        print("[ ? ] Cleared successfully")
+        while True:
+            return_menu = input("[ * ] Return to menu? (y/n) : ")
+            if str.lower(return_menu) == "y":
+                return True
     if choice == "1":
         clear()
         return True
@@ -115,7 +119,7 @@ def menu_choices(_choice):
 
 def Culculator_main():
     while True:
-        clear_terminal
+        clear_terminal()
         global Cleared
         global g_num
         global ignore_clear
@@ -212,7 +216,6 @@ def Culculator_main():
                     break
                 Opening_menu = _menu
             if Opening_menu == False:
-                clear_terminal()
                 continue
         end = input("[ * ] End application? (y/n) : ")
 
