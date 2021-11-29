@@ -232,6 +232,10 @@ def main():
         if choice == "2":
             _menu = menu()
             opening = _menu
+        if choice == "3":
+            end = input("[ * ] End application? (y/n) : ")
+            if str.lower(end) == "y":
+                opening = False
 
 
 if __name__ == "__main__":
