@@ -2,12 +2,6 @@ import time
 import random
 import os
 
-print("[ * ] python initializing...\n")
-time.sleep(random.random() * 0.5)
-print("[ * ] python started\n")
-time.sleep(0.5)
-print("[ * ] Welcome to sheep's calcuator\n")
-
 g_num = 0
 Cleared = True
 ignore_clear = False
@@ -65,7 +59,23 @@ def clear_terminal():
     os.system("cls" if os.name == "nt" else "clear")
 
 
-def menu(_choice):
+def menu():
+    clear_terminal()
+    print("[ 1 ] Clear")
+    print("[ 2 ] Continue")
+    print("[ 3 ] History")
+    print("[ 4 ] Help")
+    print("[ 5 ] Clear history ")
+    print("[ 7 ] end application\n")
+
+    choice = input("[ * ] Your choice : ")
+    _menu = menu_choices(choice)
+    if _menu == "end":
+        return "end"
+    return _menu
+
+
+def menu_choices(_choice):
     choice = _choice
     # false means succesfully and break while loop
     Valid = check(choice, "Num")
@@ -196,18 +206,7 @@ def Culculator_main():
         elif str.lower(Continue) == "m":
             Opening_menu = True
             while Opening_menu:
-                clear_terminal()
-                print("[ 1 ] Clear")
-                print("[ 2 ] Continue")
-                print("[ 3 ] History")
-                print("[ 4 ] Help")
-                print("[ 5 ] Clear history ")
-                print("[ 7 ] end application\n")
-
-                choice = input("[ * ] Your choice : ")
-                _menu = menu(choice)
-                if _menu == "end":
-                    return
+                _menu = menu()
                 Opening_menu = _menu
 
         end = input("[ * ] End application? (y/n) : ")
@@ -217,8 +216,29 @@ def Culculator_main():
 
 
 def main():
-    Culculator_main()
+    opening = True
+    while opening:
+        clear_terminal()
+        print("[ ? ] Please pick one")
+        time.sleep(0.2)
+        print("[ 1 ] Calculator")
+        print("[ 2 ] Menu")
+        print("[ 3 ] Quit")
+        choice = input("[ * ] Your choice : ")
+        if choice == "1":
+            clear_terminal()
+            Culculator_main()
+            opening = False
+        if choice == "2":
+            _menu = menu()
+            opening = _menu
 
 
 if __name__ == "__main__":
+    print("[ ? ] python initializing...\n")
+    time.sleep(random.random() * 0.5)
+    print("[ ? ] python started\n")
+    time.sleep(0.5)
+    print("[ ? ] Welcome to sheep's calcuator\n")
+    time.sleep(1)
     main()
