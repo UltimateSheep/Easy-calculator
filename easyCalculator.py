@@ -66,7 +66,7 @@ def menu():
     print("[ 3 ] History")
     print("[ 4 ] Help")
     print("[ 5 ] Clear history ")
-    print("[ 7 ] end application\n")
+    print("[ 6 ] end application\n")
 
     choice = input("[ * ] Your choice : ")
     _menu = menu_choices(choice)
@@ -115,6 +115,7 @@ def menu_choices(_choice):
 
 def Culculator_main():
     while True:
+        clear_terminal
         global Cleared
         global g_num
         global ignore_clear
@@ -205,10 +206,14 @@ def Culculator_main():
             continue
         elif str.lower(Continue) == "m":
             Opening_menu = True
-            while Opening_menu:
+            while Opening_menu == True:
                 _menu = menu()
+                if _menu == "end":
+                    break
                 Opening_menu = _menu
-
+            if Opening_menu == False:
+                clear_terminal()
+                continue
         end = input("[ * ] End application? (y/n) : ")
 
         if str.lower(end) == "y":
@@ -219,7 +224,7 @@ def main():
     opening = True
     while opening:
         clear_terminal()
-        print("[ ? ] Please pick one")
+        print("\t\t--Main Menu--")
         time.sleep(0.2)
         print("[ 1 ] Calculator")
         print("[ 2 ] Menu")
@@ -231,11 +236,19 @@ def main():
             opening = False
         if choice == "2":
             _menu = menu()
-            opening = _menu
+            clear_terminal()
+            if _menu == False:
+                continue
+            elif _menu == "end":
+                end = input("[ * ] End application? (y/n) : ")
+                if str.lower(end) == "y":
+                    opening = False
         if choice == "3":
             end = input("[ * ] End application? (y/n) : ")
             if str.lower(end) == "y":
                 opening = False
+        else:
+            continue
 
 
 if __name__ == "__main__":
